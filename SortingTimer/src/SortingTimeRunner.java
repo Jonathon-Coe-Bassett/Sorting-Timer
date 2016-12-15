@@ -2,6 +2,7 @@ import java.util.*;
 public class SortingTimeRunner
 	{
 		private static int sizeArr;
+		private static ArrayList<Time> times =new ArrayList<>();
 		public static void main(String[] args)
 			{
 				System.out.println("How big would you like the array to be?");
@@ -10,21 +11,35 @@ public class SortingTimeRunner
 				sizeArr=ui.nextInt();
 				System.out.println("Note: Time is in milliseconds");
 				int[] items=generate();
+				
+				
 				Stopwatch time=new Stopwatch();
 				qs(items, 0, items.length - 1);
-				System.out.println(time.elapsedTime() + " for Quick Sort");
+				times.add(new Time("QuickSort",(double) time.elapsedTime()));
+				System.out.println(times.get(0) + " for Quick Sort");
 				time=new Stopwatch();
 				bubbleSort(items);
-				System.out.println(time.elapsedTime() + " for Bubble Sort");
+				times.add(new Time("BubbleSort",(double) time.elapsedTime()));
+				System.out.println(times.get(1) + " for Bubble Sort");
 				time=new Stopwatch();
 				mergeSort(items);
-				System.out.println(time.elapsedTime() + " for Merge Sort");
+				times.add(new Time("MergeSort",(double) time.elapsedTime()));
+				System.out.println(times.get(2) + " for Merge Sort");
 				time=new Stopwatch();
 				InsertionSort(items);
-				System.out.println(time.elapsedTime() + " for Insertion Sort");
+				times.add(new Time("InsertionSort",(double) time.elapsedTime()));
+				System.out.println(times.get(3) + " for Insertion Sort");
 				time=new Stopwatch();
 				SelectionSort(items);
-				System.out.println(time.elapsedTime() + " for Selection Sort");
+				times.add(new Time("SelectionSort",(double) time.elapsedTime()));
+				System.out.println(times.get(4) + " for Selection Sort");
+				//Collections.sort(times);
+				//I'll need to add comparable to sort by time
+				System.out.println("The times in order of fastest to slowest were:");
+				for(Time i: times)
+					
+						System.out.println(i.getName());
+					}
 
 
 			}
