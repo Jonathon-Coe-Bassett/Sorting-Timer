@@ -9,36 +9,30 @@ public class SortingTimeRunner
 				System.out.println("Note: Best results with an array 1000 or greater.");
 				Scanner ui=new Scanner(System.in);
 				sizeArr=ui.nextInt();
-				System.out.println("Note: Time is in milliseconds");
 				int[] items=generate();
 				
 				
 				Stopwatch time=new Stopwatch();
 				qs(items, 0, items.length - 1);
 				times.add(new Time("QuickSort",(double) time.elapsedTime()));
-				System.out.println(times.get(0).getTime() + " for Quick Sort");
-				time=new Stopwatch();
-				bubbleSort(items);
-				times.add(new Time("BubbleSort",(double) time.elapsedTime()));
-				System.out.println(times.get(1).getTime() + " for Bubble Sort");
-				time=new Stopwatch();
 				mergeSort(items);
 				times.add(new Time("MergeSort",(double) time.elapsedTime()));
-				System.out.println(times.get(2).getTime() + " for Merge Sort");
 				time=new Stopwatch();
 				InsertionSort(items);
 				times.add(new Time("InsertionSort",(double) time.elapsedTime()));
-				System.out.println(times.get(3).getTime() + " for Insertion Sort");
 				time=new Stopwatch();
 				SelectionSort(items);
 				times.add(new Time("SelectionSort",(double) time.elapsedTime()));
-				System.out.println(times.get(4).getTime() + " for Selection Sort");
-				System.out.println();
-				Collections.sort(times, Time.timeComparator);
+				time=new Stopwatch();
+				bubbleSort(items);
+				times.add(new Time("BubbleSort",(double) time.elapsedTime()));
 				System.out.println("The times in order of fastest to slowest were:");
+				time=new Stopwatch();
+				Collections.sort(times, Time.timeComparator);
+				System.out.printf("%-20s %-20s %-20s\n", "Sort type" , "Nano Seconds" , "Seconds");
 				for(Time i: times)
 					
-						System.out.println(i.getName() + " "+ i.getTime());
+						System.out.printf("%-20s %-20s %-20s\n", i.getName() , i.getTime() , i.getTime()/ 1000000000.0);
 					}
 
 

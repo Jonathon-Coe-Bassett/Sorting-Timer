@@ -1,13 +1,13 @@
 
 public class Stopwatch
 	{
-		 long start = System.currentTimeMillis();
+		 long start = System.nanoTime();
 		 public Stopwatch() {
-		        start = System.currentTimeMillis();
+		        start = System.nanoTime();
 		    } 
 		    public double elapsedTime() {
-		        long now = System.currentTimeMillis();
-		        return (now - start);
+		        long now = System.nanoTime();
+		        return ((now - start));
 		    }
 
 	}
