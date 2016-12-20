@@ -10,7 +10,8 @@ public class SortingTimeRunner
 				Scanner ui=new Scanner(System.in);
 				sizeArr=ui.nextInt();
 				int[] items=generate();
-				
+				System.out.println("This might take a few seconds....");
+				System.out.println();
 				
 				Stopwatch time=new Stopwatch();
 				qs(items, 0, items.length - 1);
