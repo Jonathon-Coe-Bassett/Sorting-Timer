@@ -55,8 +55,11 @@ public class SortingTimeRunner
 				writer(times);
 				for (Time i : times)
 					{
-						System.out.printf("%-20s %-20s %-20s\n", i.getName(), i.getTime(), i.getTime() / 1000000000.0);
+						System.out.printf("%-20s %-20.1f %-20.10f\n", i.getName(), i.getTime(), i.getTime() / 1000000000.0);
 					}
+				System.out.println("These are the average and fastest types of each sort with " + sizeArr + " items");
+				System.out.printf("%-20s %-20s %-20s\n", "Sort type", "Average Nano Seconds", "Fastest Nano Seconds");
+				reader(times);
 			}
 		private static int[] generate()
 			{
@@ -91,32 +94,43 @@ public class SortingTimeRunner
 		{
 			for(Time y : t)
 				{
-			String fileName = y.getName() + sizeArr;
-			int highScore = Integer.MAX_VALUE;
-			try {
-		        BufferedReader reader = new BufferedReader(new FileReader(fileName));
-		        String line = reader.readLine();
-		        while (line != null)                 // read the score file line by line
-		        {
-		            try {
-		                int score = Integer.parseInt(line.trim());   // parse each line as an int
-		                if (score < highScore)                       // and keep track of the largest
-		                { 
-		                    highScore = score; 
-		                }
-		            } catch (NumberFormatException e1) {
-		                // ignore invalid scores
-		                //System.err.println("ignoring invalid score: " + line);
-		            }
-		            line = reader.readLine();
-		        }
-		        reader.close();
-		        System.out.println(highScore);
-		    } catch (IOException ex) {
-		        System.err.println("ERROR reading scores from file");
-		    }
+					String fileName = y.getName() + sizeArr;
+					double highScore = Double.MAX_VALUE;
+					double total = 0;
+					int c = 0;
+					try 
+						{
+							BufferedReader reader = new BufferedReader(new FileReader(fileName));
+							String line = reader.readLine();
+							while (line != null)                 // read the score file line by line
+								{
+									try 
+										{
+											double score = Double.parseDouble(line.trim());   // parse each line as an int
+											if (score < highScore)                       // and keep track of the largest
+												{
+													total += score;
+													c++;
+													highScore = score; 
+												}
+										} 
+									catch (NumberFormatException e1) 
+										{
+											// ignore invalid scores
+											//System.err.println("ignoring invalid score: " + line);
+										}
+									line = reader.readLine();
+								}
+							total /= ((double)c);
+							reader.close();
+							System.out.printf("%-20s %-20.1f %-20.1f\n", y.getName(), total, highScore);
+						} 
+					catch (IOException ex) 
+						{
+							System.err.println("ERROR reading scores from file");
+						}
 			
+				}
 		}
-		}
-		}
+	}
 	
