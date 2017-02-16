@@ -10,21 +10,36 @@ public class SortingTimeRunner
 			{
 				System.out.println("How big would you like the array to be?");
 				System.out.println("Note: Best results with an array 1000 or greater.");
-				System.out.println("1: 1000");
-				System.out.println("2: 10000");
-				System.out.println("3: 100000");
-				System.out.println("4: 1000000");
+				System.out.println("1: 1");
+				System.out.println("2: 10");
+				System.out.println("3: 100");
+				System.out.println("4: 1000");
+				System.out.println("5: 10000");
+				System.out.println("6: 100000");
+				System.out.println("7: 1000000");
 				Scanner ui = new Scanner(System.in);
 				int in = ui.nextInt();
 				if(in == 1)
 					{
-						sizeArr = 1000;
+						sizeArr = 1;
 					}
 				else if(in == 2)
 					{
-						sizeArr = 10000;
+						sizeArr = 10;
 					}
 				else if(in == 3)
+					{
+						sizeArr = 100;
+					}
+				else if(in == 4)
+					{
+						sizeArr = 1000;
+					}
+				else if(in == 5)
+					{
+						sizeArr = 10000;
+					}
+				else if(in == 6)
 					{
 						sizeArr = 100000;
 					}
@@ -57,6 +72,7 @@ public class SortingTimeRunner
 					{
 						System.out.printf("%-20s %-20.1f %-20.10f\n", i.getName(), i.getTime(), i.getTime() / 1000000000.0);
 					}
+				System.out.println();
 				System.out.println("These are the average and fastest types of each sort with " + sizeArr + " items");
 				System.out.printf("%-20s %-20s %-20s\n", "Sort type", "Average Nano Seconds", "Fastest Nano Seconds");
 				reader(times);
@@ -80,6 +96,7 @@ public class SortingTimeRunner
 					double p = y.getTime();
 					try {
 				        BufferedWriter output = new BufferedWriter(new FileWriter(fileName, true));
+				        String.format("%-20s.1f", p);
 				        output.newLine();
 				        output.append("" + p);
 				        output.close();
@@ -111,7 +128,7 @@ public class SortingTimeRunner
 												{
 													total += score;
 													c++;
-													highScore = score; 
+													highScore = score;
 												}
 										} 
 									catch (NumberFormatException e1) 
@@ -124,6 +141,10 @@ public class SortingTimeRunner
 							total /= ((double)c);
 							reader.close();
 							System.out.printf("%-20s %-20.1f %-20.1f\n", y.getName(), total, highScore);
+							if(highScore == y.getTime())
+								{
+									System.out.println("This is a new highscore for " + y.getName() + "!");
+								}
 						} 
 					catch (IOException ex) 
 						{
