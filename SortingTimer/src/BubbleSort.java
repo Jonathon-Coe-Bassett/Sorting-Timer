@@ -22,4 +22,19 @@ public class BubbleSort
 							}
 					}
 			}
+		public static void newa(int [] intArray)
+		{
+			for(int i = 0; i < intArray.length; i++)
+				{
+					for (int j = 0; j < intArray.length; j++)
+						{
+							if(intArray[i] > intArray[j])
+								{
+									int x = intArray[i];
+									intArray[i] = intArray[j];
+									intArray[j] = x;
+								}
+						}
+				}
+		}
 	}
