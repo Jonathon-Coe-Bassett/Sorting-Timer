@@ -49,6 +49,7 @@ public class SortingTimeRunner
 					}
 				String fileName = "LeaderBoard2.txt";
 				int[] items = generate();
+				System.out.println(items[0]);
 				Stopwatch time = new Stopwatch();
 				QuickSort.qs(items, 0, items.length - 1);
 				times.add(new Time("QuickSort", (double) time.elapsedTime()));
@@ -82,7 +83,9 @@ public class SortingTimeRunner
 				int[] temp = new int[sizeArr];
 				for (int i = 0; i < sizeArr; i++)
 					{
-						temp[i] = (int) ((Math.random() * 100));
+//						temp[i] = (int) ((Math.random() * 100));
+						temp[i] = Integer.MAX_VALUE;
+//						temp[i] = 1;
 					}
 				return temp;
 			}
