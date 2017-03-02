@@ -1,7 +1,6 @@
 
 public class QuickSort
 	{
-		
 		public static void qs(int items[], int left, int right)
 			{
 				int i, j;

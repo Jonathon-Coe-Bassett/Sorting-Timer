@@ -18,7 +18,15 @@ public class SortingTimeRunner
 				System.out.println("6: 100000");
 				System.out.println("7: 1000000");
 				Scanner ui = new Scanner(System.in);
-				int in = ui.nextInt();
+				int in = 4;
+				try
+					{
+						in = ui.nextInt();
+					}
+				catch(Exception e)
+					{
+						System.out.println("We will now do an array with 1000 items");
+					}
 				if(in == 1)
 					{
 						sizeArr = 1;
@@ -49,7 +57,7 @@ public class SortingTimeRunner
 					}
 				String fileName = "LeaderBoard2.txt";
 				int[] items = generate();
-				System.out.println(items[0]);
+//				System.out.println(items[0]);
 				Stopwatch time = new Stopwatch();
 				QuickSort.qs(items, 0, items.length - 1);
 				times.add(new Time("QuickSort", (double) time.elapsedTime()));
@@ -83,8 +91,8 @@ public class SortingTimeRunner
 				int[] temp = new int[sizeArr];
 				for (int i = 0; i < sizeArr; i++)
 					{
-//						temp[i] = (int) ((Math.random() * 100));
-						temp[i] = Integer.MAX_VALUE;
+						temp[i] = (int) ((Math.random() * 100));
+//						temp[i] = Integer.MAX_VALUE;
 //						temp[i] = 1;
 					}
 				return temp;
