@@ -6,7 +6,7 @@ public class SortingTimeRunner
 		private static int sizeArr;
 		private static ArrayList<Time> times = new ArrayList<>();
 
-		public static void main(String[] args) throws IOException
+		public static void main(String[] args) throws IOException, InterruptedException
 			{
 				System.out.println("How big would you like the array to be?");
 				System.out.println("Note: Best results with an array 1000 or greater.");
@@ -18,14 +18,18 @@ public class SortingTimeRunner
 				System.out.println("6: 100000");
 				System.out.println("7: 1000000");
 				Scanner ui = new Scanner(System.in);
-				int in = 4;
+				int in = 7;
 				try
 					{
 						in = ui.nextInt();
 					}
 				catch(Exception e)
 					{
-						System.out.println("We will now do an array with 1000 items");
+						System.out.println("We will now do an array with 1000000 items...");
+						Thread.sleep(3000);
+						System.out.println("To punish you...");
+						Thread.sleep(3000);
+						System.out.println("For trying to break the program");
 					}
 				if(in == 1)
 					{
@@ -145,7 +149,7 @@ public class SortingTimeRunner
 									catch (NumberFormatException e1) 
 										{
 											// ignore invalid scores
-											//System.err.println("ignoring invalid score: " + line);
+//											System.err.println("ignoring invalid score: " + line);
 										}
 									line = reader.readLine();
 								}
